@@ -1,6 +1,6 @@
 %{
     #include <stdlib.h>
-    #include
+    #include "parser.tab.h"
 %}
 
 /* SECCION: TOKENS */
@@ -45,9 +45,3 @@ PALABRA_RESERVADA [REPETIR|DEVOLVER|CONSTANTE|e|PI]
 %%
 
 yywrap() {}
-
-int main()
-{
-    printf("Enter a string: ");
-    yylex();
-}
