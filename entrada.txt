@@ -1,0 +1,3 @@
+A(A): A=PI-e#  DEVOLVER(A)#. 
+ooo
+A(A): REPETIR(3.0):A=2.0 + 3.0 * 5.0# DEVOLVER(A)#. 

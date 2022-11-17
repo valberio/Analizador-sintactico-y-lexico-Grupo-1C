@@ -12,36 +12,33 @@ IDENTIFICADOR ({LETRA}|{GUION})+
 ENTERO {DIGITO}+{PUNTO}{DIGITO}+
 OPERADOR [+|-|*|/|^]
 CARACTER_PUNTUACION  [#|#.]
-PALABRA_RESERVADA [REPETIR|DEVOLVER|CONSTANTE|e|PI]
-%%
-{IDENTIFICADOR}  {return yytext;}
-{ENTERO} {printf("Entero %s\n", yytext);}
-{PUNTO} {printf("Punto %s\n", yytext);}
-{DIGITO} {printf("Digito %s\n", yytext);}
+PALABRA_RESERVADA [REPETIR|DEVOLVER|e|PI]
 
-//Caracteres de Puntuacion
-'#'         {return '#';}
+%%
+
+"#"         {return '#';}
 "#."        {return CIERRE_FUNCION;}  
-'('         {return '(';}   
-')'         {return ')';} 
-':'         {return ':';}    
-//Palabras reservadas
+"("         {return '(';}   
+")"         {return ')';} 
+":"         {return ':';}    
+"="         {return '=';}
+
 "REPETIR"   {return REPETIR;}
 "DEVOLVER"  {return DEVOLVER;}
-"CONSTANTE" {return CONSTANTE;}
-'e'         {return e;}
+"e"         {return e;}
 "PI"        {return PI;}
  
-//operadores
 "+"     {return '+';}
 "-"     {return '-';}
 "^"     {return '^';}
 "*"     {return '*';}
 "/"     {return '/';}
 
+{IDENTIFICADOR}  {return IDENTIFICADOR;}
+{ENTERO} {printf("Entero %s\n", yytext);} {return ENTERO;}
+
 \0 {printf("Whitespace\n"); }
-\n {return 0; }
+
+
 
 %%
-
-yywrap() {}
